@@ -1,9 +1,31 @@
 import java.util.Arrays;
+import java.util.Collections;
 
 public class App {
 
   public static void moveZerosToTheEnd(int[] arr) {
-    
+    int zeroCount = 0;
+    for (int num : arr){
+      if ( num == 0){
+        zeroCount++;
+      }
+    }
+
+    for(int i = 0; i < arr.length; i++){
+      if(arr[i] == 0 && i < arr.length - 1){
+        int nextNum = i + 1;
+        while(arr[i] == 0){
+          if(arr[nextNum] > 0){
+            arr[i] = arr[nextNum];
+            arr[nextNum] = 0;
+          } else if(( arr[nextNum] == 0 ) && ( nextNum + 1 < arr.length )){
+            nextNum++;
+          } else if(nextNum == arr.length - 1){
+            break;
+          }
+        }
+      }
+    }
   }
 
   public static void main(String[] args) {
